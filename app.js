@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
+const bodyParser= require('body-parser')
 const todo = require('./controllers/todo')
+app.use('/',todo);
 // Template engine
 app.set('view engine', 'ejs');
 
@@ -8,7 +10,10 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 
-app.use('/',todo);
+//parse application/json
+app.use(bodyParser.json())
+
+
 
 
 app.listen(3001,function(err){
