@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const todo = require('./controllers/todo')
 // Template engine
 app.set('view engine', 'ejs');
 
@@ -7,6 +8,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 
-app.listen(3000,function(err){
-    console.log("app running on port 3000")
+app.use('/',todo);
+
+
+app.listen(3001,function(err){
+    console.log("app running on port 3001")
 })
